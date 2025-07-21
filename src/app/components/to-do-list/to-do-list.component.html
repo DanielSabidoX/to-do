@@ -1,0 +1,13 @@
+<div class="d-flex flex-column flex-lg-row">
+    <div class="flex-fill item">
+        <div>
+            <app-to-do-list-item [tarefas]="tarefasPendentes" (tarefaConcluida)="atualizarConcluidas()" (tarefaId)="mostrarSubtarefas($event)"></app-to-do-list-item>
+        </div>
+        <div class="mt-3">
+            <app-to-do-list-item-done [tarefasConcluidas]="tarefasConcluidas" (tarefa)="atualizarPendentes()"></app-to-do-list-item-done>
+        </div>
+    </div>
+    <div class="flex-fill task">
+        <app-to-do-list-task [tarefaId]="tarefaIdVisualizar"></app-to-do-list-task>
+    </div>
+</div>

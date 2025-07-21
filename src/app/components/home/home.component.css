@@ -1,0 +1,19 @@
+.welcome-box {
+  top: 15%;
+  position: absolute;
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.75); /* transparente no light */
+  transition: all 0.3s ease-in-out;
+}
+
+[data-bs-theme="dark"] .welcome-box {
+  background-color: rgba(33, 37, 41, 0.6); /* transparente no dark */
+  color: #f8f9fa;
+}
+
+.welcome-box .btn-primary {
+  font-size: 1.1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+}
+

@@ -1,0 +1,38 @@
+<h3 class="fw-bold">{{'Sub-Tarefas'}}</h3>
+<p class="fw-bold bg-warning border rounded-3 px-3" *ngIf="tarefas[0].ativa && !tarefas[0].concluida">{{tarefas[0].titulo}}</p>
+<span class="linha"></span>
+
+<form [formGroup]="addSubTarefaForm" (ngSubmit)="addSubTarefa(tarefas[0].id)" *ngIf="tarefas[0].ativa && !tarefas[0].concluida">
+<div class="d-flex flex-column flex-md-row">
+    <div class="">
+        <input readonly hidden type="text" class="form-control" placeholder="ID"  formControlName="id" value="{{tarefas[0].id}}" required/>
+    </div>    
+    <div class="flex-fill">
+        <input type="text" class="form-control" placeholder="Informe uma nova sub-tarefa"  formControlName="titulo" required/>
+    </div>
+    <div class=" ">
+        <button class="btn btn-success fw-bold" [disabled]="tarefas[0].id === 0">+</button>
+    </div>
+</div>
+</form>
+
+<div class="box-sub-tasks">
+
+<ul class="list-group my-3">
+    <!-- Inserir a lista de sub-tarefas com o loop for pegando da variavel sub-tarefas-->
+    <div *ngFor="let tarefa of tarefas">
+        <ng-container *ngIf="tarefa.ativa && !tarefa.concluida">
+        <div *ngFor="let task of tarefa.subTarefas">
+            <ng-container *ngIf="task.ativa">
+            <li class="list-group-item d-flex d-flex ">
+                <input type="checkbox" [checked]="task.concluida" class="form-check-input" id="{{task.id}}" (click)="alterarSituacaoSubTarefa(tarefa.id, task.id)" >
+                <span class="mx-2" [ngClass]="{'text-muted text-decoration-line-through': task.concluida}">{{task.titulo}}</span>
+                <span class="ms-auto badge text-bg-danger badge-fixa-lixeira" (click)="excluirSubTarefa(tarefa.id, task.id)">X</span>
+            </li>
+            </ng-container>
+        </div>
+        </ng-container>
+    </div>
+</ul>
+
+</div>

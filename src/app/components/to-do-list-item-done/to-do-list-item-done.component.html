@@ -1,0 +1,22 @@
+<h3 class="fw-bold">Tarefas Concluidas</h3>
+<p>Acompanhe aqui suas tarefas concluidas!</p>
+<span class="linha"></span>
+
+<div class="box-task">
+    <ul class="list-group">
+        <!-- Inserir a lista de tarefas com o loop for pegando da variavel tarefas-->
+         <div *ngFor="let tarefa of tarefasConcluidas">
+            <li class="list-group-item d-flex ">
+                <input checked="true" type="checkbox" class="form-check-input pointer" id="{{tarefa.id}}" (click)="reabrirTarefa(tarefa.id)">
+                <span class="mx-2 text-decoration-line-through text-muted">{{tarefa.titulo}}</span>
+                <span class="ms-auto badge-fixa badge bg-warning rounded-pill text-decoration-line-through text-muted pointer">{{getSubTarefasAtivasCount(tarefa)}} Sub-tarefas</span>
+            </li>
+
+         </div>
+    </ul>
+</div>
+<span class="badge bg-primary rounded-pill">
+  Você tem <span class="badge text-bg-success">{{tarefasConcluidas.length}}</span> tarefas concluidas!!!
+</span><br>
+<span class="text-right">*  Clique nas sub-tarefas para visualizá-las.</span><br>
+<span class="text-right">** Para reabrir a tarefa clique no checkbox ao lado da tarefa.</span>

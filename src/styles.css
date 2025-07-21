@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+header{
+    border: 2px solid;
+}
+
+.linha {
+    border: 1px solid;
+    margin: 1rem 0;
+    width: 100%;
+    display: block;
+}
+
+.box-task {
+    border: 1px solid;
+    border-radius: 0.25rem;
+    min-height: 10rem;
+    max-height: 10rem;
+    overflow-y: scroll;
+    margin-top: 10px;
+}
+
+.box-sub-tasks {
+    border: 1px solid;
+    border-radius: 0.25rem;
+    min-height: 32rem;
+    max-height: 32rem;
+    overflow-y: scroll;
+    margin-top: 10px;
+}
+
+.pointer {
+    cursor: pointer
+}
+
+.badge-fixa {
+  min-width: 100px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.badge-fixa-lixeira {
+  min-width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

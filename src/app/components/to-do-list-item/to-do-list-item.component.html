@@ -1,0 +1,46 @@
+<h3 class="fw-bold">Lista de Tarefas</h3>
+<p>Gerencie suas tarefas eficientemente!</p>
+<span class="linha"></span>
+
+
+<!-- Formulário para adicionar nova tarefa -->
+<form [formGroup]="addTarefaForm" (ngSubmit)="addTarefa()">
+    <div class="d-flex flex-column flex-md-row">
+        <div class="flex-fill">
+            <input type="text" class="form-control" placeholder="Informe uma nova tarefa" id="titulo"
+                formControlName="titulo" required />
+
+        </div>
+        <div class="">
+            <button class="btn btn-success fw-bold">Adicionar Tarefa</button>
+        </div>
+    </div>
+</form>
+
+<div class="box-task">
+    <ul class="list-group">
+        <!-- Inserir a lista de tarefas com o loop for pegando da variavel tarefas-->
+        <div *ngFor="let tarefa of tarefas">
+            <ng-container *ngIf="tarefa.ativa">
+            <li class="list-group-item d-flex" [ngClass]="{'bg-primary-subtle': tarefa.id === selectedTarefaId}">
+                <input type="checkbox" class="form-check-input pointer" id="{{tarefa.id}}"
+                    (click)="concluirTarefa(tarefa.id)">
+                <span class="mx-2">{{tarefa.titulo}}</span>
+                <div class="ms-auto d-flex">
+                    <span class="badge-fixa badge bg-warning rounded-pill pointer "
+                        (click)="carregarSubtarefas(tarefa.id)">{{getSubTarefasAtivasCount(tarefa)}} Sub-tarefas</span>
+                    <span class="badge text-bg-danger badge-fixa-lixeira" (click)="excluirTarefa(tarefa.id)">X</span>
+                </div>
+            </li>
+            </ng-container>
+        </div>
+    </ul>
+</div>
+
+
+<span class="badge bg-primary rounded-pill">
+    Você tem <span class="badge text-bg-danger ">{{getTarefasPendentesCount()}}</span> tarefas pendentes!!!
+</span><br>
+
+<span>* Clique nas sub-tarefas para visualizá-las e editá-las.</span><br>
+<span>** Para finalizar a tarefa clique no checkbox ao lado da tarefa.</span>
