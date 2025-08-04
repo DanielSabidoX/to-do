@@ -61,9 +61,8 @@ jobs:
         with:
           app-name: 'projetoazure001'
           slot-name: 'Production'
-          package: .
+          package: node-app   
 
-          
 
 
 
